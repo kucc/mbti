@@ -10,6 +10,8 @@ export const Layout = styled.div`
   justify-content: center;
   align-items: center;
   background: white;
+
+  animation: ${fadeIn} 0.5s linear;
 `;
 
 export const Quiz = styled.div`

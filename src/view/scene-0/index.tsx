@@ -7,11 +7,20 @@ interface QuizProps {
 }
 
 function Scene0({ next }: QuizProps) {
+  const [goNext, setGoNext] = useState(false);
+
   return (
     <>
-      <S.Layout onClick={next}>
+      <S.Layout
+        onClick={() => {
+          setGoNext(true);
+          setTimeout(() => {
+            next();
+          }, 2000);
+        }}
+      >
         <S.AssetContainer>
-          <S.Asset1 src={STATIC_URL.ASSET0_1} />
+          <S.Asset1 next={goNext} src={STATIC_URL.ASSET0_1} />
         </S.AssetContainer>
         <S.AssetContainer>
           <S.Asset2 src={STATIC_URL.ASSET0_2} />

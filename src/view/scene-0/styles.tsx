@@ -21,6 +21,15 @@ const swing = keyframes`
   100% { transform: rotate(0deg); } 
 `;
 
+const swing2 = keyframes`
+  0% { transform: rotate(0deg); }
+  20% { transform: rotate(18deg); } 
+  40% { transform: rotate(-12deg); } 
+  60% { transform: rotate(6deg); } 
+  80% { transform: rotate(-6deg); } 
+  100% { transform: rotate(0deg); } 
+`;
+
 const updown = keyframes`
   0% { transform: translateY(0); }
   50% { transform: translateY(-2rem); }
@@ -40,11 +49,16 @@ export const AssetContainer = styled.div`
   justify-content: center;
 `;
 
-export const Asset1 = styled.img`
+interface onClickNextAsset1 {
+  next: boolean;
+}
+
+export const Asset1 = styled.img<onClickNextAsset1>`
   margin-top: 10rem;
   transform-origin: top center;
   width: 75%;
-  animation: ${swing} 1s;
+  animation: ${(props) => (props.next ? swing2 : swing)}
+    ${(props) => (props.next ? "2s" : "1s")};
 `;
 
 export const Asset2 = styled.img`
